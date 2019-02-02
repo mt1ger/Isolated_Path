@@ -9,9 +9,9 @@
 #include "txtParse.h"
 
 // #define NUMOFSEEDS 30
-#define NUMOFSEEDS 10
+#define NUMOFSEEDS 2 
 // #define NUMOFREQUESTS 100000 
-#define NUMOFREQUESTS 50000 
+#define NUMOFREQUESTS 10000 
 #define LTOFSEG 4
 
 using namespace std;
@@ -29,10 +29,10 @@ int main () {
 	vector<int> Core, Lambda, Seed;
 	double Number;
 	static unsigned int NumofRequests = NUMOFREQUESTS;
-	static string Exec = "/Users/mt1ger/Desktop/Simulator/P-Seg/Sim"; 
-	static string Topo = "/Users/mt1ger/Desktop/Simulator/P-Seg/Topology/NSF14.txt";
-	// static string Topo = "~/Desktop/Simulator/SimSDM-EON/Topology/Test.txt";
-	static string Path = "/Users/mt1ger/Desktop/Simulator/P-Seg/Plot/";
+	static string Exec = "/Users/mt1ger/Desktop/Simulator/Isolated_Path/Sim"; 
+	static string Topo = "/Users/mt1ger/Desktop/Simulator/Isolated_Path/Topology/NSF14.txt";
+	// static string Topo = "~/Desktop/Simulator/SimSDM-EOIsolated_PathN/Topology/Test.txt";
+	static string Path = "/Users/mt1ger/Desktop/Simulator/Isolated_Path/Plot/";
 	unsigned int cnt = 0;
 	string Filename;
 	txtParse txtparse;
@@ -46,7 +46,7 @@ int main () {
 	Core.push_back (7);
 
 	for (int i = 10; i < 501; i += 10) {
-		Lambda.push_back (i);
+		Lambda.push_back (2 * i);
 	}
 
 	cout << "Input a number for seed and press enter: " << endl;
@@ -57,8 +57,8 @@ int main () {
 	}
 
 
-	// for (unsigned int Max = 1; Max <= LTOFSEG; Max++) {
-	for (unsigned int Max = 2; Max <= 2; Max++) {
+	for (unsigned int Max = 1; Max <= LTOFSEG; Max++) {
+	// for (unsigned int Max = 2; Max <= 2; Max++) {
 		NumofThreads = Core.size () * Lambda.size () * Seed.size ();
 		thread ThreadPointer[NumofThreads];
 
